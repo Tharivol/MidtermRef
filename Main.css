@@ -1,0 +1,38 @@
+img {
+	float-left:
+	width:100px;
+	height:125px;
+}
+
+body {
+    background-image: url("Images/Hopfarm.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.myjumbotron	{
+	text-align: center;
+	opacity: .8;
+	background-color: rgb(200, 140, 100);
+	color: green;
+	font-family: "Times New Roman", serif;
+	border-radius: 40px;
+	width: 480px;
+	margin: 15;
+	border: 1;
+	padding: 0;
+
+}
+
+.outer	{
+	position: relative;
+	justify-content: center;
+	align-items: center;
+}
+.inner	{
+	margin: auto;
+
+}
+
+	
+	
