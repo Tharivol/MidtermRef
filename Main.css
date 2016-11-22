@@ -61,17 +61,32 @@ body {
 .white {
 	color: white;
 	font-size: 15px;
+	margin-left: 10px;
+
 }
 
 input.inputBox{
 	background-color: rgb(200, 140, 100);
 	border-color: rgb(200, 140, 100)!important;
+	border-style: outset;
 }
 
 
 .brewButton {
 	background-color: rgb(200, 140, 100);
 	border-color: rgb(200, 140, 100)!important;
+	width: 209px;
+}
+
+.name {
+	color: white;
+	font-size: 15px;
+
+}
+.user {
+	color: white;
+	font-size: 30px;
+	text-align: center;
 }
 
 

@@ -10,6 +10,9 @@ function HopCtrl ($http)	{
 		window.Hph = Hph;
 
 		Hph.greeting = "Hello!";
+		Hph.beerData = {};
+		Hph.showWell = false;
+
 
 		Hph.searchBeers = function() {
 
@@ -18,6 +21,12 @@ function HopCtrl ($http)	{
 			console.log("Success: ", success);
 			if(success.data.data) {
 				Hph.beerData = success.data.data[0];
+			if(Hph.beerData!={}) {
+				Hph.showWell = true;
+				} else {
+					Hph.showWell = false;
+				}
+				console.log(Hph.beerData);
 			} else {
 				console.log("Beer not found!");
 			}
@@ -25,6 +34,7 @@ function HopCtrl ($http)	{
 		}, function(error) {
 			console.log("Error: ", error);
 		});
+		// above is the pattern to specify a "promise" which is a future result
 	}
 		
 }

@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html ng-app="Hoppy">
     <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js">
+        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
-        
-
-        <script src="Main.js"></script>
+        <script src="Main.js">
+        </script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
         <link rel="stylesheet" href="Main.css">
-        <title>HoppyHome</title>
+    <title>HoppyHome</title>
     
-</head>
+    </head>
 <body ng-controller="HoppyController as Hph">
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      
-    </div>
-
-    
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>     
+      </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li ><a style="color: green;" href="#">Home <span class="sr-only">(current)</span></a></li>
@@ -34,106 +32,69 @@
         <li><a style="color: green;"href="#">Members</a></li>
         <li class="dropdown">
           <a style="color: green;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kettle Club <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
+        <ul class="dropdown-menu">
+          <li><a href="#">Membership</a></li>
+          <li><a href="#">Home Brewer</a></li>
+          <li><a href="#">Senior Brewer</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Professional</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Ingrediants/Equipment</a></li>
+        </ul>
           <li><a style="color: green;"href="#">Log In</a></li>
           <li><a style="color: green;"href="#">Sign up</a></li>
-        </li>
+          </li>
       </ul>
       <form ng-submit="Hph.searchBeers()" class="navbar-form navbar-left">
         <div class="form-group">
           <input ng-model="Hph.beerName" type="text" class="form-control" placeholder="Search">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">Submit
+        </button>
       </form>
-        </li>
-      </ul>
+      
     </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
+    </div><!-- /.container-fluid -->
+  </nav>
   <img class="animated infinite bounce" src="/images/Coolhop.png" alt="Hops">
-			<div class="container-fluid outer">
-				<div class="jumbotron myjumbotron inner">
-				  <h1>Hoppy Home</h1>
-				</div>
+	<div class="container-fluid" ng-show="Hph.showWell"> 
+    <div class="row">
+      <div class="col-offset-8 well">      
+        <div>Name: {{Hph.beerData.name}}</div>
+        <div>Description: {{Hph.beerData.description}}</div>  
       </div>
+    </div>
+  </div>
 
-
-<!-- Use this section so offer membership for either professional or Home-brewer
--->
-
-
-
-<!-- 
-
-<div id="demo">
-<button type="button" onclick="loadDoc()">Some Cool Breweries</button>
-</div>
-
-<script>
-function loadDoc() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("demo").innerHTML =
-      this.responseText;
-    }
-  };
-  xhttp.open("GET", "hopsInfo.txt", true);
-  xhttp.send();
-}
-</script>
-
--->
+  <div class="jumbotron myjumbotron inner">
+	 <h1>Hoppy Home</h1>
+  </div>
+    <h2 class="user">Cheers!&nbsp;&nbsp;&nbsp;{{Hph.name}} </h2>
 
 <!-- Under is the prompt to type in your name -->
-<div class="white">
-  <p>Name: <input class="inputBox" type="text" ng-model="Hph.name"></p>
-  <h3>Hello {{Hph.name}} {{Hph.beerData}}</h3>
+      <p class="name">Name: <input class="inputBox" type="text" ng-model="Hph.name"></p>
+<!-- above is the prompt to t ype in your name and recieve a hello-->
+  <div class="white" ng-init="toggle=true; type1='All Grain Mash'; type2='  Partial Grain Mash'">
+    <button class="brewButton" ng-click="toggle=!toggle">Brewing Style "Click"</button>
+      <h4 ng-if="toggle">{{ type1 }} </h4>
+      <h4 ng-if="!toggle">{{ type2 }} </h4>
+  </div>
+  <div class="container-fluid space">   
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <iframe height="240" src="https://www.youtube.com/embed/WXVCToBLmdk" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <iframe height="240" src="https://www.youtube.com/embed/jrrXghzvngA" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <iframe height="240" src="https://www.youtube.com/embed/WtpbJ3UymYM" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+    </div>
 </div>
-
-<!-- above is the prompt to type in your name and recieve a hello-->
-
-<div class="white" ng-init="toggle=true; type1='All Grain Mash'; type2='  Partial Grain Mash'">
-        <button class="brewButton" ng-click="toggle=!toggle">Brewing Style "Click"</button>
-          <h4 ng-if="toggle">{{ type1 }} </h4>
-          <h4 ng-if="!toggle">{{ type2 }} </h4>
-        </div>
-
-
-
- <div class="container-fluid space">   
-  <div class="row">
-        <div class="col-xs-12 col-sm-4">
-         
-          <iframe height="240" src="https://www.youtube.com/embed/WXVCToBLmdk" frameborder="0" allowfullscreen></iframe>
-
-        
-         </div>
-        <div class="col-xs-12 col-sm-4">
-
-          <iframe height="240" src="https://www.youtube.com/embed/jrrXghzvngA" frameborder="0" allowfullscreen></iframe>
-        </div>
-         
-        <div class="col-xs-12 col-sm-4">
-
-         <iframe height="240" src="https://www.youtube.com/embed/WtpbJ3UymYM" frameborder="0" allowfullscreen></iframe>
-         
-        </div>
-        </div>
-</div>
-
-
-    
-  </body>
+</body>
 </html>
 
 
